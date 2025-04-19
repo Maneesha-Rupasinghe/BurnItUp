@@ -1,10 +1,11 @@
 import Image4 from '../assets/HIIT.jpg'; // Replace with an actual image for the company/team
 import Image5 from '../assets/cardio.jpg'; // Replace with an actual image for the company/team
 import Image6 from '../assets/cycling.jpg'; // Replace with an actual image for the company/team
+import HomePageEndSection from '../components/HomePageEnd';
 
 const About = () => {
   return (
-    <div className="container mx-auto px-8 py-16">
+    <div className="container mx-auto px-8 pt-16 mb-12">
       {/* Section Title */}
       <h2 className="text-4xl font-bold text-center text-orange-600 mb-8">
         About Us
@@ -65,6 +66,10 @@ const About = () => {
           Contact Us
         </a>
       </div>
+      <div className='mt-12'>
+        <HomePageEndSection />
+      </div>
+
     </div>
   );
 };

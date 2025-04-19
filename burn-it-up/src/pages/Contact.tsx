@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import HomePageEndSection from '../components/HomePageEnd';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -96,7 +97,7 @@ const Contact = () => {
         </div>
       </div>
 
-      {/* Optional: You could add a map or other details here */}
+     <HomePageEndSection/>
     </div>
   );
 };

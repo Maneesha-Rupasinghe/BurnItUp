@@ -2,12 +2,14 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import BIUNavBar from './components/BIUNavBar';
-import Home from './components/Home';
-import Contact from './components/Contact';
-import About from './components/About';
-import Counter from './components/Counter';
-import SignUpPage from './components/SignUp';
-import SignInPage from './components/SignIn';
+
+import About from './pages/About';
+import Counter from './pages/Counter';
+import Home from './pages/Home';
+import Contact from './pages/Contact';
+import SignUpPage from './pages/SignUp';
+import SignInPage from './pages/SignIn';
+
 
 
 function App() {

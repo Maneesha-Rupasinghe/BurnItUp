@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const HomePageEndSection = () => {
     return (
         <div className="bg-gradient-to-r from-orange-500 to-yellow-500 py-16 text-center text-white">
@@ -5,12 +7,12 @@ const HomePageEndSection = () => {
             <p className="text-lg mb-8">Join thousands of users who are achieving their fitness goals with BurnItUp. Track, predict, and optimize your workouts today!</p>
 
             {/* CTA Button */}
-            <a
-                href="/signup"
+            <Link
+                to="/signup"
                 className="bg-orange-700 text-white text-xl py-3 px-8 rounded-lg shadow-md hover:bg-orange-800 transition duration-300"
             >
                 Get Started Now
-            </a>
+            </Link>
 
             {/* Additional Motivation or Testimonials */}
             <div className="mt-10">
