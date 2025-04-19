@@ -68,7 +68,7 @@ const Contact = () => {
             </div>
             <button
               type="submit"
-              className="bg-orange-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300"
+              className="bg-orange-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300 cursor-pointer"
             >
               Submit Message
             </button>
@@ -88,16 +88,16 @@ const Contact = () => {
           </div>
           <div className="mb-4">
             <h4 className="text-xl font-semibold text-gray-800">Phone</h4>
-            <p className="text-lg text-gray-700">(123) 456-7890</p>
+            <p className="text-lg text-gray-700">(+94) 456-7890</p>
           </div>
           <div className="mb-4">
             <h4 className="text-xl font-semibold text-gray-800">Address</h4>
-            <p className="text-lg text-gray-700">123 Fitness St, BurnCity, FitLand</p>
+            <p className="text-lg text-gray-700">123 Fitness St, Colombo, Sri Lanka</p>
           </div>
         </div>
       </div>
 
-     <HomePageEndSection/>
+      <HomePageEndSection />
     </div>
   );
 };

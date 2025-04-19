@@ -28,7 +28,7 @@ const ArticleSection = () => {
                 </Link>
 
                 {/* Image 8 */}
-                <Link to="https://www.gundersenhealth.org/health-wellness/eat-move/should-i-eat-back-my-exercise-calories" className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg w-1/3 h-[500px] transform transition-transform duration-300 hover:scale-105 cursor-pointer">
+                <Link to="https://www.uclahealth.org/news/article/surprising-connection-between-sleep-and-weight-management#:~:text=People%20who%20consistently%20log%20six,Type%202%20diabetes%20and%20obesity" className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg w-1/3 h-[500px] transform transition-transform duration-300 hover:scale-105 cursor-pointer">
                     <img src={Image6} alt="Image 8" className="w-full h-2/3 object-cover mb-4 rounded-2xl" />
                     <h3 className="text-orange-600 text-2xl font-bold mb-2 text-center">Sleep and Weight: What's the connection?</h3>
                     <p className="text-gray-700 text-center">Sleep plays a vital role in weight management and overall health. Find out how.</p>

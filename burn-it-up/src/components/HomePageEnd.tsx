@@ -8,7 +8,7 @@ const HomePageEndSection = () => {
 
             {/* CTA Button */}
             <Link
-                to="/signup"
+                to="/calory"
                 className="bg-orange-700 text-white text-xl py-3 px-8 rounded-lg shadow-md hover:bg-orange-800 transition duration-300"
             >
                 Get Started Now

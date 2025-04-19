@@ -1,11 +1,25 @@
 import { useState } from 'react';
 import Logo from '../assets/logo.png'
 import CloseIcon from '@mui/icons-material/Close';
+import axios from 'axios';
+import { base_url } from '../config/config';
+import C1 from '../assets/c1.jpg';
+import C2 from '../assets/c2.jpg';
+import C3 from '../assets/c3.jpg';
+import C4 from '../assets/c4.jpg';
 
 const CaloriesBurnedCalculator = () => {
+
+    const imagemap = {
+        'Low': C1,
+        "Medium.Low": C2,
+        "Medium.High": C3,
+        "High": C4
+    }
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [error, setError] = useState('');
     const [isErrorVisible, setIsErrorVisible] = useState(false);
+    const [prediction, setPrediction] = useState<keyof typeof imagemap | null>(null);
     // State to track the current step and form data
     const [step, setStep] = useState(1);
     const [formData, setFormData] = useState({
@@ -50,18 +64,72 @@ const CaloriesBurnedCalculator = () => {
             [field]: ''
         });
     };
+    const handleClearAll = () => {
+        setFormData({
+            workoutType: '',
+            workoutDuration: '',
+            gender: '',
+            age: '',
+            weight: '',
+            height: '',
+            stepsTaken: '',
+            distanceCovered: '',
+            workoutIntensity: '',
+            moodBeforeWorkout: '',
+            moodAfterWorkout: '',
+            sleepHours: '',
+            dailyCaloriesIntake: '',
+            heartRate: '',
+            restingHeartRate: '',
+        })
+    }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         // Reset errors on submit
         setErrors({});
         setIsErrorVisible(false);
 
+        // Validate the current step
         if (validateStep(step)) {
-            console.log('Form submitted:', formData);
+            try {
+                // Prepare the data to be sent in the body of the request
+                const requestData = {
+                    age: parseInt(formData.age),
+                    gender: formData.gender,
+                    height: parseInt(formData.height),
+                    weight: parseInt(formData.weight),
+                    workoutType: formData.workoutType,
+                    workoutDuration: parseInt(formData.workoutDuration),
+                    heartRate: parseInt(formData.heartRate),
+                    stepsTaken: parseInt(formData.stepsTaken),
+                    distance: parseFloat(formData.distanceCovered),
+                    workoutIntensity: formData.workoutIntensity,
+                    sleepHours: parseInt(formData.sleepHours),
+                    dailyCaloriesIntake: parseInt(formData.dailyCaloriesIntake),
+                    restingHeartRate: parseInt(formData.restingHeartRate),
+                    moodBeforeWorkout: formData.moodBeforeWorkout,
+                    moodAfterWorkout: formData.moodAfterWorkout
+                };
+
+                // Send POST request using Axios
+                const response = await axios.post(`${base_url}`, requestData);
+
+                // Handle the response
+                if (response.data) {
+                    const { prediction, probabilities } = response.data;
+                    console.log(probabilities)
+                    setPrediction(prediction);  // Store the prediction in the state
+                    setStep(4);
+                }
+            } catch (error) {
+                console.error('There was an error sending the request:', error);
+                setErrors({ general: "There was an error while calculating calories burned." });
+                setIsErrorVisible(true); // Show error message
+            }
         } else {
-            setIsErrorVisible(true);  // Show error message
+            setIsErrorVisible(true);  // Show error message for incomplete form
             setErrors({ general: "Please fill out all required fields." });
         }
     };
@@ -120,10 +188,18 @@ const CaloriesBurnedCalculator = () => {
             {/* Personal Section (Step 1) */}
             {step === 1 && (
                 <div className="mb-8">
+                    {/* Clear All Fields Button */}
+                    <button
+                        onClick={handleClearAll}
+                        className="relative top-4 right-0 px-6 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    >
+                        Clear All Fields
+                    </button>
                     {/* Personal Section Title */}
                     <div className="text-4xl mb-12 text-center font-bold">
                         <p>Personal:</p>
                     </div>
+
 
                     {/* Workout Type */}
                     <div className="mb-12 border-[1px] border-orange-400 rounded-2xl py-8 px-20 relative">
@@ -376,6 +452,13 @@ const CaloriesBurnedCalculator = () => {
             {/* Workout Section (Step 2) */}
             {step === 2 && (
                 <div className="mb-8">
+                    {/* Clear All Fields Button */}
+                    <button
+                        onClick={handleClearAll}
+                        className="relative top-4 right-0 px-6 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    >
+                        Clear All Fields
+                    </button>
                     {/* Workout Section Title */}
                     <div className="text-4xl mb-12 text-center font-bold">
                         <p>Workout:</p>
@@ -582,10 +665,19 @@ const CaloriesBurnedCalculator = () => {
             {/* Wellness Section (Step 3) */}
             {step === 3 && (
                 <div className="mb-8">
+                    {/* Clear All Fields Button */}
+                    <button
+                        onClick={handleClearAll}
+                        className="relative top-4 right-0 px-6 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                    >
+                        Clear All Fields
+                    </button>
                     {/* Wellness Section Title */}
                     <div className="text-4xl mb-12 text-center font-bold">
                         <p>Wellness:</p>
+
                     </div>
+
 
                     {/* Sleep Hours */}
                     <div className="relative mb-12 border-[1px] border-orange-400 rounded-2xl py-8 px-20">
@@ -748,9 +840,36 @@ const CaloriesBurnedCalculator = () => {
                 </div>
 
             )}
+            {step === 4 && prediction && (
+
+                <div className="mt-8 p-4 border-2 border-orange-600 rounded-lg mb-12 max-w-4xl mx-auto">
+                    <h2 className="text-4xl font-bold text-center text-orange-600 mb-4">Your Personal Result</h2>
+
+                    {/* Display the image */}
+                    <div className="flex justify-center mb-6 mt-2  rounded-2xl ">
+
+                        <img
+                            src={prediction ? imagemap[prediction] : C1} // Default to C1 if the prediction is invalid
+                            alt="Workout Result"
+                            className="w-[350px] h-[300px] object-cover rounded-2xl overflow-hidden"
+                        />
+                    </div>
+
+                    <p className="text-xl text-center">Your workout will likely result in a: </p>
+                    <p className='text-xl text-center'><strong>{prediction}</strong></p>
+
+                    <button
+                        onClick={() => setStep(1)}
+                        className="px-6 py-3 rounded-lg text-lg font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
+                    >
+                        Start Over
+                    </button>
+                </div>
+
+            )}
             {/* Error Message */}
             {isErrorVisible && (
-                <div className="bg-red-100 text-red-600 p-4 rounded-lg mb-8 border-2 border-red-500">
+                <div className="bg-red-100 text-red-600 p-4 rounded-lg  border-2 border-red-500 mb-12">
                     <div className="flex items-center">
                         <span className="mr-2 text-xl">⚠️</span>
                         <ul>

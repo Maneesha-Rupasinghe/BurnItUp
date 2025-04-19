@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Image5 from "../assets/Image5.jpg";
+import John from '../assets/john.jpg'
+import Sophia from '../assets/sophia.jpg'
 
 const UserFeedBack = () => {
   // State to track the current user feedback
@@ -9,18 +11,21 @@ const UserFeedBack = () => {
   const feedbacks = [
     {
       name: 'Emali Charlotte',
-      feedback: `"My life changed. My life is beautiful!!"`,
-      image: Image5
+      feedback: `"LOST 71LBS (35%) AND MAINTAINED AFTER 492 DAYS. My Life is Changed. "`,
+      image: Image5,
+      feedback2: ' My Life is Beautiful.! Lets BURNITUP!!!'
     },
     {
       name: 'John Doe',
-      feedback: `"BurnItUp has made my fitness journey so much easier. I love it!"`,
-      image: Image5
+      feedback: `"LOST 29LBS AND MAINTAINED AFTER 379 DAYS."`,
+      image: John,
+      feedback2: ' I use this app religiously for one year and it made a huge different in my health and happiness!'
     },
     {
       name: 'Sophia Smith',
-      feedback: `"I can now track my calories effortlessly. This app is life-changing!"`,
-      image: Image5
+      feedback: `"LOST AND MAINTAINED 103LBS (40%) AFTER 616 DAYS. "`,
+      image: Sophia,
+      feedback2: 'BURNITUP help me know exactly how many calories I burned! '
     }
   ];
 
@@ -52,19 +57,21 @@ const UserFeedBack = () => {
             <p className="text-orange-600 text-4xl font-bold mb-4">
               {feedbacks[currentIndex].name}
             </p>
+
             <p className="text-3xl text-gray-700 italic mb-6">{feedbacks[currentIndex].feedback}</p>
+            <p className="text-2xl text-gray-700 italic mb-6">{feedbacks[currentIndex].feedback2}</p>
 
             {/* Buttons to swap feedback */}
             <div className="flex justify-center gap-6">
               <button
                 onClick={previousFeedback}
-                className="bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-gray-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-gray-700 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               >
                 Previous Feedback
               </button>
               <button
                 onClick={nextFeedback}
-                className="bg-orange-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300 transform hover:-translate-y-1"
+                className="bg-orange-600 text-white px-6 py-2 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               >
                 Next Feedback
               </button>

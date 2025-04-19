@@ -21,6 +21,22 @@ if (exists("MI_model") && exists("tier_models") && exists("specialized_models"))
   stop("Required models are missing.")
 }
 
+# Enable CORS by adding a filter
+#* @filter cors
+cors <- function(req, res) {
+  res$setHeader("Access-Control-Allow-Origin", "*")  # Allow all origins (for development)
+  res$setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+  res$setHeader("Access-Control-Allow-Headers", "Content-Type")
+
+  # Handle preflight OPTIONS request
+  if (req$REQUEST_METHOD == "OPTIONS") {
+    res$status <- 200
+    return(list())
+  }
+
+  plumber::forward()
+}
+
 # Function to predict for constant_model (from calorie_model.R)
 predict.constant_model <- function(object, newdata, type = "raw", ...) {
   if (type == "raw") {

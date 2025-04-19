@@ -1,6 +1,7 @@
-import Image4 from '../assets/HIIT.jpg'; // Replace with an actual image for the company/team
-import Image5 from '../assets/cardio.jpg'; // Replace with an actual image for the company/team
-import Image6 from '../assets/cycling.jpg'; // Replace with an actual image for the company/team
+import { Link } from 'react-router-dom';
+import T1 from '../assets/t1.jpg';
+import T2 from '../assets/t2.jpg';
+import T3 from '../assets/t3.jpg';
 import HomePageEndSection from '../components/HomePageEnd';
 
 const About = () => {
@@ -34,23 +35,25 @@ const About = () => {
       <div className="flex justify-evenly gap-8">
         {/* Team Member 1 */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg w-1/4">
-          <img src={Image4} alt="Team Member 1" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
-          <h4 className="text-xl font-semibold text-orange-600 mb-2">Jane Doe</h4>
-          <p className="text-gray-700">Founder & CEO</p>
+          <img src={T1} alt="Team Member 1" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
+          <h4 className="text-xl font-semibold text-orange-600 mb-2">Dinithi Sooriyaarachchi
+          </h4>
+          <p className="text-gray-700">University of Colombo</p>
         </div>
 
         {/* Team Member 2 */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg w-1/4">
-          <img src={Image5} alt="Team Member 2" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
-          <h4 className="text-xl font-semibold text-orange-600 mb-2">John Smith</h4>
-          <p className="text-gray-700">Chief Technology Officer</p>
+          <img src={T2} alt="Team Member 2" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
+          <h4 className="text-xl font-semibold text-orange-600 mb-2">Deelaka Samarawickrama
+          </h4>
+          <p className="text-gray-700">University of Colombo</p>
         </div>
 
         {/* Team Member 3 */}
         <div className="flex flex-col items-center bg-white p-6 rounded-lg shadow-lg w-1/4">
-          <img src={Image6} alt="Team Member 3" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
-          <h4 className="text-xl font-semibold text-orange-600 mb-2">Emily Johnson</h4>
-          <p className="text-gray-700">Marketing Director</p>
+          <img src={T3} alt="Team Member 3" className="w-40 h-40 object-cover mb-4 rounded-full border-4 border-orange-400" />
+          <h4 className="text-xl font-semibold text-orange-600 mb-2">Umasha Devindi</h4>
+          <p className="text-gray-700">University of Colombo</p>
         </div>
       </div>
 
@@ -59,12 +62,12 @@ const About = () => {
         <p className="text-xl text-gray-700 mb-6">
           We’d love to hear from you! If you have any questions, suggestions, or feedback, feel free to reach out.
         </p>
-        <a
-          href="/contact"
+        <Link
+          to="/contact"
           className="bg-orange-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-orange-700 transition-all duration-300"
         >
           Contact Us
-        </a>
+        </Link>
       </div>
       <div className='mt-12'>
         <HomePageEndSection />
