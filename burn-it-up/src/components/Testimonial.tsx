@@ -49,10 +49,10 @@ const UserFeedBack = () => {
 
           {/* Right Side - Feedback */}
           <div className="w-1/2">
-            <p className="text-orange-600 text-3xl font-bold mb-4">
+            <p className="text-orange-600 text-4xl font-bold mb-4">
               {feedbacks[currentIndex].name}
             </p>
-            <p className="text-2xl text-gray-700 italic mb-6">{feedbacks[currentIndex].feedback}</p>
+            <p className="text-3xl text-gray-700 italic mb-6">{feedbacks[currentIndex].feedback}</p>
 
             {/* Buttons to swap feedback */}
             <div className="flex justify-center gap-6">

@@ -9,7 +9,7 @@ interface NavBarProps {
 const BIUNavBar: React.FC<NavBarProps> = ({ currentPage }) => {
     const navItems = [
         { id: 'home', label: 'Home', path: '/', active: currentPage === 'Home' },
-        { id: 'calory', label: 'Calory', path: '/calory', active: currentPage === 'Calory' },
+        { id: 'calory', label: 'Calory Counter', path: '/calory', active: currentPage === 'Calory' },
         { id: 'contact', label: 'Contact Us', path: '/contact', active: currentPage === 'Contact' },
         { id: 'about', label: 'About Us', path: '/about', active: currentPage === 'About' },
     ];

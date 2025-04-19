@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Logo from '../assets/logo.png'
+import CloseIcon from '@mui/icons-material/Close';
 
 const CaloriesBurnedCalculator = () => {
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -42,6 +43,12 @@ const CaloriesBurnedCalculator = () => {
         if (step > 1) {
             setStep(step - 1);
         }
+    };
+    const handleClear = (field: string) => {
+        setFormData({
+            ...formData,
+            [field]: ''
+        });
     };
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -141,8 +148,18 @@ const CaloriesBurnedCalculator = () => {
                                 <option value="Cycling">Cycling</option>
                                 <option value="Yoga">Yoga</option>
                             </select>
+                            {formData.workoutType && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleClear('workoutType')}
+                                    className="ml-2"
+                                >
+                                    <CloseIcon />
+                                </button>
+                            )}
                             {errors.workoutType && <p className="text-red-500 text-sm">{errors.workoutType}</p>}
                         </div>
+
                     </div>
 
                     {/* Workout Duration & Gender */}
@@ -175,6 +192,15 @@ const CaloriesBurnedCalculator = () => {
 
 
                                 /> <span className="ml-2 text-gray-700">min</span>
+                                {formData.workoutDuration && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('workoutDuration')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                                 {error && <p className="text-red-500 text-sm">{error}</p>}
                             </div>
                         </div>
@@ -214,6 +240,15 @@ const CaloriesBurnedCalculator = () => {
                                 >
                                     Other
                                 </button>
+                                {formData.gender && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('gender')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -246,6 +281,15 @@ const CaloriesBurnedCalculator = () => {
                                     required
                                     placeholder='years'
                                 /><span className="ml-2 text-gray-700">years</span>
+                                {formData.age && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('age')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
 
@@ -275,6 +319,15 @@ const CaloriesBurnedCalculator = () => {
                                     required
                                     placeholder='kg'
                                 /><span className="ml-2 text-gray-700">kg</span>
+                                {formData.weight && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('weight')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -305,6 +358,15 @@ const CaloriesBurnedCalculator = () => {
                                 placeholder='cm'
                             />
                             <span className="ml-2 text-gray-700">cm</span>
+                            {formData.height && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleClear('height')}
+                                    className="ml-2"
+                                >
+                                    <CloseIcon />
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -344,7 +406,15 @@ const CaloriesBurnedCalculator = () => {
                                 }}
                                 className="w-full p-4 border-2 border-orange-400 rounded-md focus:outline-none focus:border-orange-600 max-w-1/3"
                                 required
-                            />
+                            /> {formData.stepsTaken && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleClear('stepsTaken')}
+                                    className="ml-2"
+                                >
+                                    <CloseIcon />
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className='flex flex-row gap-8 mb-8'>
@@ -375,6 +445,15 @@ const CaloriesBurnedCalculator = () => {
                                     required
                                     placeholder='km'
                                 /><span className="ml-2 text-gray-700">km</span>
+                                {formData.distanceCovered && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('distanceCovered')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
 
@@ -414,6 +493,15 @@ const CaloriesBurnedCalculator = () => {
                                 >
                                     High
                                 </button>
+                                {formData.workoutIntensity && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('workoutIntensity')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -434,12 +522,21 @@ const CaloriesBurnedCalculator = () => {
                                     className="w-full p-4 border-2 border-orange-400 rounded-md focus:outline-none focus:border-orange-600 max-w-2/3"
                                     required
                                 >
-                                    <option value="">Select Mood</option>
+                                    <option value="" disabled>Select Mood</option>
                                     <option value="Happy">😊 Happy</option>
                                     <option value="Neutral">😐 Neutral</option>
                                     <option value="Tired">😴 Tired</option>
                                     <option value="Stressed">😓 Stressed</option>
                                 </select>
+                                {formData.moodBeforeWorkout && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('moodBeforeWorkout')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
 
                             </div>
                         </div>
@@ -460,11 +557,20 @@ const CaloriesBurnedCalculator = () => {
                                     className="w-full p-4 border-2 border-orange-400 rounded-md focus:outline-none focus:border-orange-600 max-w-2/3"
                                     required
                                 >
-                                    <option value="">Select Mood</option>
+                                    <option value="" disabled>Select Mood</option>
                                     <option value="Energized">😊 Energized</option>
                                     <option value="Neutral">😐 Neutral</option>
                                     <option value="Fatigued">😩 Fatigued</option>
                                 </select>
+                                {formData.moodAfterWorkout && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('moodAfterWorkout')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
 
                             </div>
                         </div>
@@ -508,6 +614,15 @@ const CaloriesBurnedCalculator = () => {
                                 required
                                 placeholder='hours'
                             /><span className="ml-2 text-gray-700">hours</span>
+                            {formData.sleepHours && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleClear('sleepHours')}
+                                    className="ml-2"
+                                >
+                                    <CloseIcon />
+                                </button>
+                            )}
                         </div>
                     </div>
                     <div className='flex flex-row gap-8 mb-8'>
@@ -539,6 +654,15 @@ const CaloriesBurnedCalculator = () => {
                                     required
                                     placeholder='cal'
                                 /><span className="ml-2 text-gray-700">cal</span>
+                                {formData.dailyCaloriesIntake && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('dailyCaloriesIntake')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
 
@@ -569,6 +693,15 @@ const CaloriesBurnedCalculator = () => {
                                     required
                                     placeholder='bpm'
                                 /><span className="ml-2 text-gray-700">bpm</span>
+                                {formData.heartRate && (
+                                    <button
+                                        type="button"
+                                        onClick={() => handleClear('heartRate')}
+                                        className="ml-2"
+                                    >
+                                        <CloseIcon />
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -601,6 +734,15 @@ const CaloriesBurnedCalculator = () => {
 
                                 placeholder='bpm'
                             /><span className="ml-2 text-gray-700">bpm</span>
+                            {formData.restingHeartRate && (
+                                <button
+                                    type="button"
+                                    onClick={() => handleClear('restingHeartRate')}
+                                    className="ml-2"
+                                >
+                                    <CloseIcon />
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
