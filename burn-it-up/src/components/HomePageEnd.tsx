@@ -6,7 +6,7 @@ const HomePageEndSection = () => {
             <h2 className="text-4xl font-bold mb-6">Start Your Journey to a Healthier You!</h2>
             <p className="text-lg mb-8">Join thousands of users who are achieving their fitness goals with BurnItUp. Track, predict, and optimize your workouts today!</p>
 
-            {/* CTA Button */}
+
             <Link
                 to="/calory"
                 className="bg-orange-700 text-white text-xl py-3 px-8 rounded-lg shadow-md hover:bg-orange-800 transition duration-300"
@@ -14,7 +14,7 @@ const HomePageEndSection = () => {
                 Get Started Now
             </Link>
 
-            {/* Additional Motivation or Testimonials */}
+
             <div className="mt-10">
                 <p className="text-lg font-semibold">Already over 100,000 users have made their fitness journey easier with BurnItUp!</p>
                 <p className="italic mt-4">"This app changed my life, it's amazing!" - Emali Charlotte</p>

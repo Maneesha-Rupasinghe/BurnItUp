@@ -1,6 +1,5 @@
-
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import './App.css';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import BIUNavBar from './components/BIUNavBar';
 
 import About from './pages/About';
@@ -9,30 +8,67 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import SignUpPage from './pages/SignUp';
 import SignInPage from './pages/SignIn';
+import ProtectedRoute from './components/ProtectedRoutes';
 
+import { useAuth } from './context/AuthContext';
 
+const PageWrapper = () => {
+  const location = useLocation();
+  const { user } = useAuth();
 
-function App() {
-  // Get current page path
-  const path = window.location.pathname;
   let currentPage: 'Home' | 'Calory' | 'Contact' | 'About' = 'Home';
+  if (location.pathname === '/calory') currentPage = 'Calory';
+  else if (location.pathname === '/contact') currentPage = 'Contact';
+  else if (location.pathname === '/about') currentPage = 'About';
 
-  if (path === '/') currentPage = 'Home';
-  else if (path === '/calory') currentPage = 'Calory';
-  else if (path === '/contact') currentPage = 'Contact';
-  else if (path === '/about') currentPage = 'About';
 
   return (
-    <BrowserRouter>
-      <BIUNavBar currentPage={currentPage} />
+    <>
+      {user && <BIUNavBar currentPage={currentPage} />}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/calory" element={<Counter />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/calory"
+          element={
+            <ProtectedRoute>
+              <Counter />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <ProtectedRoute>
+              <Contact />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <ProtectedRoute>
+              <About />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/signin" element={<SignInPage />} />
       </Routes>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <BrowserRouter>
+      <PageWrapper />
     </BrowserRouter>
   );
 }

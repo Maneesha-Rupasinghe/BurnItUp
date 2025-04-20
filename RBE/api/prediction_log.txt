@@ -1,1 +1,113 @@
 All models loaded successfully!
+All models loaded successfully!
+Received new data:
+15 "Male" 552 55 "Strength" 55 55 5 5 "Medium" 5 555 55 "Neutral" "Neutral"
+
+Mutated Data:
+15 "Male" 552 55 "Strength" 55 55 5 5 "Medium" 5 555 55 "Neutral" "Neutral" 1.8050304557866 1 0
+
+Predicted Metabolic Intensity:
+0.182495479105512
+
+Tier Probabilities:
+"low" "mid" "high"
+0.062 0.768 0.17
+
+Using constant model for low tier 
+
+Using subset model for mid tier 
+
+Using constant model for high tier 
+
+Low Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+1 0 0 0
+
+Mid Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0.255934798183918 0.744065201816082 0
+
+High Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0 0 1
+
+Weighted Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0.062 0.196557925005249 0.571442074994751 0.17
+
+Final Predictions (Class):
+Medium.High 
+Received new data:
+55 "Male" 55 55 "Running" 55 31 3 3 "Low" 3 333 33 "Neutral" "Energized"
+
+Mutated Data:
+55 "Male" 55 55 "Running" 55 31 3 3 "Low" 3 333 33 "Neutral" "Energized" 181.818181818182 0.939393939393939 -0.0606060606060606
+
+Predicted Metabolic Intensity:
+0.155672555306425
+
+Tier Probabilities:
+"low" "mid" "high"
+0.07 0.708 0.222
+
+Using constant model for low tier 
+
+Using subset model for mid tier 
+
+Using constant model for high tier 
+
+Low Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+1 0 0 0
+
+Mid Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0.584472461805925 0.415527538194075 0
+
+High Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0 0 1
+
+Weighted Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0.07 0.413806502958595 0.294193497041405 0.222
+
+Final Predictions (Class):
+Medium.Low 
+Received new data:
+55 "Male" 51 55 "Cardio" 5 55 55 55 "Low" 5 55 55 "Neutral" "Neutral"
+
+Mutated Data:
+55 "Male" 51 55 "Cardio" 5 55 55 55 "Low" 5 55 55 "Neutral" "Neutral" 211.457131872357 1 0
+
+Predicted Metabolic Intensity:
+0.863154745532383
+
+Tier Probabilities:
+"low" "mid" "high"
+0.276 0.482 0.242
+
+Using constant model for low tier 
+
+Using subset model for mid tier 
+
+Using constant model for high tier 
+
+Low Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+1 0 0 0
+
+Mid Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0.0233525175843512 0.976647482415649 0
+
+High Tier Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0 0 0 1
+
+Weighted Predictions:
+"Low" "Medium.Low" "Medium.High" "High"
+0.276 0.0112559134756573 0.470744086524343 0.242
+
+Final Predictions (Class):
+Medium.High 

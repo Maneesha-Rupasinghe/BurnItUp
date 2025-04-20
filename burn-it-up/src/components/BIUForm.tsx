@@ -16,6 +16,12 @@ const CaloriesBurnedCalculator = () => {
         "Medium.High": C3,
         "High": C4
     }
+    const rangemap = {
+        'Low': '100 - 325 Calories',
+        "Medium.Low": '326 - 555 Calories',
+        "Medium.High": '556 - 773 Calories',
+        "High": '774 - 999 Calories'
+    }
     const [errors, setErrors] = useState<{ [key: string]: string }>({});
     const [error, setError] = useState('');
     const [isErrorVisible, setIsErrorVisible] = useState(false);
@@ -856,7 +862,15 @@ const CaloriesBurnedCalculator = () => {
                     </div>
 
                     <p className="text-xl text-center">Your workout will likely result in a: </p>
-                    <p className='text-xl text-center'><strong>{prediction}</strong></p>
+                    <p className='text-xl text-center'>
+                        <strong>
+                            {String(prediction).replace(/\./g, ' ')}
+                        </strong>
+                    </p>
+                    <p className="text-lg text-center">({rangemap[prediction]})</p>
+
+
+
 
                     <button
                         onClick={() => setStep(1)}
