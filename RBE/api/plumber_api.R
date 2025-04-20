@@ -1,4 +1,4 @@
-# Load necessary libraries
+
 library(plumber)
 library(ranger)
 library(randomForest)  # For rf models in tier_models
@@ -24,7 +24,7 @@ if (exists("MI_model") && exists("tier_models") && exists("specialized_models"))
 # Enable CORS by adding a filter
 #* @filter cors
 cors <- function(req, res) {
-  res$setHeader("Access-Control-Allow-Origin", "*")  # Allow all origins (for development)
+  res$setHeader("Access-Control-Allow-Origin", "*")  # Allow all origins 
   res$setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
   res$setHeader("Access-Control-Allow-Headers", "Content-Type")
 
